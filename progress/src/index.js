@@ -2,7 +2,6 @@ import './index.css'
 import progress from './progress.js'
 require("babel-polyfill");
 
-console.log(progress)
 
 document.querySelector('.start').onclick = function() {
 	progress.start()

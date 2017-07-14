@@ -3,7 +3,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 50px;
+	height: 5px;
 }
 .progress .bar{
 	position: absolut;
@@ -15,4 +15,23 @@
 	transform: translateX(-50%);
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
+	opacity: 1;
+	box-shadow: rgba(0,0,0,.6) 2px 0 6px 1px;
+}
+.progress .blink{
+	animation: blind 2s ease-out infinite;
+}
+.progress .disappear{
+	opacity: 0;
+}
+@keyframes blind {
+	30%{
+		opacity: 0.8;
+	}
+	60%{
+		opacity: 0.4;
+	}
+	100%{
+		opacity: 0.8;
+	}
 }
