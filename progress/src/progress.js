@@ -19,6 +19,11 @@ const st = (time)=>{
 	})
 }
 
+//一次动画时间
+const transition = 400
+//为加载完允许走到的最大值
+const maxPercent = -5
+
 //节点是否添加到页面中
 let nodeAppendOnoff = false
 //距离
@@ -27,12 +32,12 @@ let percent = -100
 let speed = 3000
 //改变速度
 let speedOnoff = false
-//一次动画时间
-let transition = 400
 //是否停止了动画
 let isStop = false
-//为加载完允许走到的最大值
-let maxPercent = -5
+//是否已经完成进度
+let isDone = false
+
+//有个bug，如果重新开始点击过早，会导致定时器叠加
 
 //开始函数
 //开始这里 重新开始的时候会有问题
@@ -41,6 +46,7 @@ const start = async ()=>{
 		return false
 	}
 	if (!nodeAppendOnoff) {
+		isDone = false
 		percent = -100
 		document.body.appendChild(createEl())
 		barNode.style.transition = `${transition / 1000}s`
@@ -61,8 +67,12 @@ const start = async ()=>{
 				percent = maxPercent
 				isStop = isStop ||  true
 			}else{
-				requestAnimationFrame(recursion)
+				if (!isDone) {
+					console.log('递归了')
+					requestAnimationFrame(recursion)
+				}
 			}
+			console.log('运行')
 			barNode.style.transform = `translateX(${percent}%)`
 		}, speed);
 	}
@@ -72,6 +82,7 @@ const start = async ()=>{
 //完成函数
 const done = async ()=>{
 	if (nodeAppendOnoff) {
+		isDone = true
 		percent = 0
 		barNode.style.transform = `translateX(${percent}%)`
 		await st(transition)
