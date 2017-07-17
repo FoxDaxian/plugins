@@ -1,3 +1,4 @@
+import './index.css'
 //创建节点
 let progressNode,barNode
 function createEl() {
@@ -5,7 +6,7 @@ function createEl() {
 	progressNode.classList.add('progress')
 	barNode = document.createElement('div')
 	barNode.classList.add('bar')
-	progressNode.appendChild(barNode);
+	progressNode.appendChild(barNode)
 	return progressNode
 }
 
@@ -15,7 +16,7 @@ const st = (time)=>{
 	return new Promise((resolve, reject)=>{
 		setTimeout(()=>{
 			resolve()
-		}, time);
+		}, time)
 	})
 }
 
@@ -25,7 +26,7 @@ const transition = 400
 const maxPercent = -5
 
 //节点是否添加到页面中
-let nodeAppendOnoff = false
+let toggleNode = false
 //距离
 let percent = -100
 //多久走一次
@@ -34,55 +35,53 @@ let speed = 3000
 let speedOnoff = false
 //是否停止了动画
 let isStop = false
-//是否已经完成进度
-let isDone = false
+//每次的定时器，用于结束时候清除定时器，这样下次启动的时候就不会重复了
+let timer = null
+//是否启动，否则只能运行一次start
+let isStart = false
 
 //有个bug，如果重新开始点击过早，会导致定时器叠加
 
 //开始函数
 //开始这里 重新开始的时候会有问题
 const start = async ()=>{
-	if (nodeAppendOnoff) {
-		return false
-	}
-	if (!nodeAppendOnoff) {
-		isDone = false
+	if (timer !== null) return false
+	if (!toggleNode) {
+		isStart = !isStart
 		percent = -100
 		document.body.appendChild(createEl())
 		barNode.style.transition = `${transition / 1000}s`
-		nodeAppendOnoff = !nodeAppendOnoff
+		toggleNode = !toggleNode
+		barNode.classList.add('blink')
+		barNode.style.transform = `translateX(${percent}%)`
+		await st(16)
+		percent += 10
+		barNode.style.transform = `translateX(${percent}%)`
 	}
-	barNode.classList.add('blink')
-	barNode.style.transform = `translateX(${percent}%)`
-	await st(16)
-	percent += 10
-	barNode.style.transform = `translateX(${percent}%)`
 
 	let recursion = ()=>{
 		speedOnoff = !speedOnoff
 		speed = speedOnoff ? 2000 : 300
-		setTimeout(function() {
+		console.log('yeah')
+		timer = setTimeout(function() {
 			percent += ~~(random() * 7)
 			if (percent >= maxPercent) {
 				percent = maxPercent
 				isStop = isStop ||  true
 			}else{
-				if (!isDone) {
-					console.log('递归了')
-					requestAnimationFrame(recursion)
-				}
+				requestAnimationFrame(recursion)
 			}
-			console.log('运行')
 			barNode.style.transform = `translateX(${percent}%)`
-		}, speed);
+		}, speed)
 	}
 	recursion()
 }
 
 //完成函数
 const done = async ()=>{
-	if (nodeAppendOnoff) {
-		isDone = true
+	if (toggleNode && isStart) {
+		isStart = !isStart
+		clearTimeout(timer)
 		percent = 0
 		barNode.style.transform = `translateX(${percent}%)`
 		await st(transition)
@@ -92,16 +91,17 @@ const done = async ()=>{
 		await st(transition)
 		barNode.style.display = 'none'
 		await st(16)
-		barNode.parentNode.parentNode.removeChild(barNode.parentNode)
+		!!barNode.parentNode.parentNode && barNode.parentNode.parentNode.removeChild(barNode.parentNode)
 		isStop = isStop ||  true
-		nodeAppendOnoff = !nodeAppendOnoff
+		toggleNode = !toggleNode
+		timer = null
 	}
 }
 
 //设置一段距离
 //0-1
 const set = (dis)=>{
-	if (nodeAppendOnoff) {
+	if (toggleNode) {
 		if (Math.max(dis, 1) === dis || Math.min(dis,0) === dis) {
 			throw '请传入0-1之间的数'
 		}
@@ -116,13 +116,16 @@ const set = (dis)=>{
 
 //每次增加一点点
 const inc = ()=>{
-	if (nodeAppendOnoff) {
+	if (toggleNode) {
 		percent += 8
 		if (percent >= maxPercent) {
 			percent = maxPercent
 		}
 		barNode.style.transform = `translateX(${percent}%)`
 	}
+}
+if (!!window) {
+	Object.assign(window, {start, done, set, inc})
 }
 export default {
 	start, done, set, inc

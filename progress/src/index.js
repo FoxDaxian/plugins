@@ -1,4 +1,3 @@
-import './index.css'
 import progress from './progress.js'
 require("babel-polyfill");
 
