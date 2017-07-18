@@ -1,3 +1,6 @@
+//用于提供es6新API
+require("babel-polyfill");
+
 import './index.css'
 //创建节点
 let progressNode,barNode
@@ -123,27 +126,7 @@ const inc = ()=>{
 		barNode.style.transform = `translateX(${percent}%)`
 	}
 }
-//mac上的火狐没有问题....
 
-
-// if ( typeof module === "object" && module && typeof module.exports === "object" ) {
-// 	//common JS
-// 	module.exports = {
-// 		start, done, set, inc
-// 	}
-// } else {
-// 	Object.assign(window, {start, done, set, inc})
-
-// 	if ( typeof define === "function" && define.amd ) {
-// 		//amd or cmd
-// 		define( "progress", [], function () { 
-// 			return {
-// 				start, done, set, inc
-// 			} 
-// 		} );
-// 	}
-// }
-Object.assign(window, {start, done, set, inc})
-export default {
+module.exports = {
 	start, done, set, inc
 }
