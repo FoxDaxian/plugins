@@ -46,36 +46,35 @@ let isStart = false
 //开始这里 重新开始的时候会有问题
 const start = async ()=>{
 	if (timer !== null) return false
-	if (!toggleNode) {
-		isStart = !isStart
-		percent = -100
-		document.body.appendChild(createEl())
-		barNode.style.transition = `${transition / 1000}s`
-		toggleNode = !toggleNode
-		barNode.classList.add('blink')
-		barNode.style.transform = `translateX(${percent}%)`
-		await st(16)
-		percent += 10
-		barNode.style.transform = `translateX(${percent}%)`
-	}
-
-	let recursion = ()=>{
-		speedOnoff = !speedOnoff
-		speed = speedOnoff ? 2000 : 300
-		console.log('yeah')
-		timer = setTimeout(function() {
-			percent += ~~(random() * 7)
-			if (percent >= maxPercent) {
-				percent = maxPercent
-				isStop = isStop ||  true
-			}else{
-				requestAnimationFrame(recursion)
-			}
+		if (!toggleNode) {
+			isStart = !isStart
+			percent = -100
+			document.body.appendChild(createEl())
+			barNode.style.transition = `${transition / 1000}s`
+			toggleNode = !toggleNode
+			barNode.classList.add('blink')
 			barNode.style.transform = `translateX(${percent}%)`
-		}, speed)
+			await st(16)
+			percent += 10
+			barNode.style.transform = `translateX(${percent}%)`
+		}
+
+		let recursion = ()=>{
+			speedOnoff = !speedOnoff
+			speed = speedOnoff ? 2000 : 300
+			timer = setTimeout(function() {
+				percent += ~~(random() * 7)
+				if (percent >= maxPercent) {
+					percent = maxPercent
+					isStop = isStop ||  true
+				}else{
+					requestAnimationFrame(recursion)
+				}
+				barNode.style.transform = `translateX(${percent}%)`
+			}, speed)
+		}
+		recursion()
 	}
-	recursion()
-}
 
 //完成函数
 const done = async ()=>{
@@ -124,9 +123,27 @@ const inc = ()=>{
 		barNode.style.transform = `translateX(${percent}%)`
 	}
 }
-if (!!window) {
-	Object.assign(window, {start, done, set, inc})
-}
+//mac上的火狐没有问题....
+
+
+// if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+// 	//common JS
+// 	module.exports = {
+// 		start, done, set, inc
+// 	}
+// } else {
+// 	Object.assign(window, {start, done, set, inc})
+
+// 	if ( typeof define === "function" && define.amd ) {
+// 		//amd or cmd
+// 		define( "progress", [], function () { 
+// 			return {
+// 				start, done, set, inc
+// 			} 
+// 		} );
+// 	}
+// }
+Object.assign(window, {start, done, set, inc})
 export default {
 	start, done, set, inc
 }
