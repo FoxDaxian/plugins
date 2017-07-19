@@ -1,5 +1,5 @@
-//用于提供es6新API
-require("babel-polyfill");
+//引入promise
+const Promise = require('es6-promise').Promise;
 
 import './index.css'
 //创建节点
@@ -80,10 +80,11 @@ const start = async ()=>{
 	}
 
 //完成函数
-const done = async ()=>{
+const done = async (status = null)=>{
 	if (toggleNode && isStart) {
 		isStart = !isStart
 		clearTimeout(timer)
+		barNode.style.background = status === 'fail' && '#FF4949'
 		percent = 0
 		barNode.style.transform = `translateX(${percent}%)`
 		await st(transition)
