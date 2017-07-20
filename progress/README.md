@@ -9,9 +9,9 @@
     import miniprogress from 'miniprogress'
     import 'miniprogress/lib/progress.css'
 ```
-####there are several APIs below:
+#### there are several APIs below:
 |name|arg|type|argDesrc|featurs|
-|---|---|---|---|---|
+|---|---|---|-----------|-----------|
 |start|none|---|---|start|
 |inc|none|---|---|increase by 8% per time|
 |set|exist|Int|$gt:0 && $lt:1|custom set percent|
@@ -25,4 +25,4 @@ miniprogress.done()
 miniprogress.done('fail')
 ```
 
-##all of the above is what i hope you expect   :)
+## all of the above is what i hope you expect   :)
