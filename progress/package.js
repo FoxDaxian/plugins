@@ -11,7 +11,7 @@ const css_extract = new ExtractTextPlugin({
 webpackConfig = {
 	entry: path.resolve(__dirname, './src/progress.js'),
 	output: {
-		path: path.resolve(__dirname, './dist/'),
+		path: path.resolve(__dirname, './lib/'),
 		filename: 'progress.js',
 		publicPath: '/',
 		//以下两个选项用于以umd方式打包

@@ -1,8 +1,8 @@
 {
   "name": "miniprogress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "progress",
-  "main": "index.js",
+  "main": "/lib/progress.js",
   "scripts": {
     "pack": "node package.js",
     "dev": "webpack-dev-server"
