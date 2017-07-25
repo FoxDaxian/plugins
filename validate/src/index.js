@@ -1,3 +1,3 @@
 import v from './validate.js'
 
-v.partCn('123s是')
+v.password('a13821190779', [16, 8])

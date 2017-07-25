@@ -1,7 +1,6 @@
 const { max, min } = Math
 const { toString } = Object.prototype
 
-
 // 验证用户名
 const user = function(str, length = [4,16]) {
 	try {
@@ -57,7 +56,6 @@ const IDcard = function(str) {
 	}
 }
 
-
 // 验证全中文
 const fullCn = function(str) {
 	try {
@@ -85,8 +83,28 @@ const partCn = function(str) {
 	}
 }
 
+// 验证密码长度，没有强度
+const password = function(str, length = [4,16]) {
+	try {
+		const reg = new RegExp(`^(\\w){${min.apply(null, length)},${max.apply(null, length)}}$`)
+		if (toString.call(length) !== '[object Array]' || length.length !== 2 || max.apply(null, length) > 20 || min.apply(null, length) < 2) {
+			throw 'user方法的第二个参数要求长度为2的数组，且最小值>=2，最大值<=20'
+		}
+		return reg.test(str)
+	} catch (err) {
+		console.log(`%cWARN: ${err}`, 'color:#FF4949;')
+	}
+}
 
+// 判断两次密码是否一致
+const issamepw = function(str1, str2) {
+	if (str1 === str2) {
+		return true
+	} else {
+		return false
+	}
+}
 
 module.exports = {
-	user, email, phone, IDcard, fullCn, partCn
+	user, email, phone, IDcard, fullCn, partCn, password, issamepw
 }
