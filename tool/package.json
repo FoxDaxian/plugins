@@ -1,8 +1,8 @@
 {
-  "name": "minivalidate",
-  "version": "1.0.1",
-  "description": "validate",
-  "main": "/lib/validate.js",
+  "name": "foxTool",
+  "version": "1.0.0",
+  "description": "tool method",
+  "main": "/lib/tool.js",
   "scripts": {
     "pack": "node package.js",
     "dev": "webpack-dev-server"

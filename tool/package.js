@@ -9,7 +9,7 @@ const css_extract = new ExtractTextPlugin({
 });
 
 webpackConfig = {
-	entry: path.resolve(__dirname, './src/validate.js'),
+	entry: path.resolve(__dirname, './src/tool.js'),
 	output: {
 		path: path.resolve(__dirname, './lib/'),
 		filename: 'progress.js',
