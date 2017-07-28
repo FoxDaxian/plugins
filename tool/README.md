@@ -1,28 +1,79 @@
-# 顶部进度条插件
+# 一些简单的验证和会用到的工具方法
+### ```可按需引入，可全部引入```
 
-#### first:
-```javascript
-    npm i miniprogress -S
-```
-#### then:
-```javascript
-    import miniprogress from 'miniprogress'
-    import 'miniprogress/lib/progress.css'
-```
-#### there are several APIs below:
-|name|arg|type|argDesrc|featurs|
-|---|---|---|-----------|-----------|
-|start|none|---|---|start|
-|inc|none|---|---|increase by 8% per time|
-|set|exist|Int|$gt:0 && $lt:1|custom set percent|
-|done|exist|String|if successful is null(mean don't input anything),if fail only input 'fail'|end with success or fail|
-```javascript
-//eg:
-miniprogress.start()
-miniprogress.inc()
-miniprogress.set(0.5)
-miniprogress.done()
-miniprogress.done('fail')
-```
+##### 当前包含的方法有：
+
+|方法名|概述|
+| :------: | :------: |
+|user|验证用户名长度和合法性|
+|email|验证邮箱合法性|
+|phone|验证手机号码合法性|
+|IDcard|验证身份证合法性|
+|fullCn|验证是否全部是中文|
+|partCn|验证是否包含中文|
+|password|验证密码长度|
+|issamepw|验证两次密码是否一致|
+|curBrowser|判断当前浏览器内核|
+|autoTextarea|textarea的自适应高度并且不出现滚动条|
+
+#### 下面有各方法的具体***参数***描述
+
+---------------
+
+##### 各方法的参数：  
+#### ```user```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的用户名|
+|length|长度为2的数组，范围为2-20|
+
+#### ```email```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的邮箱|
+
+#### ```phone```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的手机号|
+
+#### ```IDcard```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的身份证号|
+
+#### ```fullCn```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的字符串|
+
+#### ```partCn```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的字符串|
+
+#### ```password```   
+|参数|概述|
+| :------: | :------: |
+|str|被验证的密码|
+|length|长度为2的数组，范围为2-20|
+
+#### ```issamepw```   
+|参数|概述|
+| :------: | :------: |
+|str1|第一次输入的密码|
+|str2|重复输入的密码|
+
+#### ```curBrowser```   
+|参数|概述|
+| :------: | :------: |
+|没有参数|none|
+
+#### ```autoTextarea```   
+|参数|概述|
+| :------: | :------: |
+|elem|textarea标签|
+|extra|光标距textarea底部的距离|
+|maxHeight|textarea的最大高度|
 
 ## all of the above is what i hope you expect   :)
