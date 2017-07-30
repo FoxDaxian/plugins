@@ -10,6 +10,7 @@ function createEl() {
 	barNode = document.createElement('div')
 	barNode.classList.add('bar')
 	progressNode.appendChild(barNode)
+	barNode.style.transform = 'translateX(-100%)'
 	return progressNode
 }
 
@@ -47,25 +48,22 @@ let isStart = false
 
 //开始函数
 //开始这里 重新开始的时候会有问题
-const start = async ()=>{
+const start = ()=>{
 	if (timer !== null) return false
 		if (!toggleNode) {
 			isStart = !isStart
-			percent = -100
 			document.body.appendChild(createEl())
 			barNode.style.transition = `${transition / 1000}s`
 			toggleNode = !toggleNode
 			barNode.classList.add('blink')
-			barNode.style.transform = `translateX(${percent}%)`
-			await st(16)
-			percent += 10
+			percent += 2
 			barNode.style.transform = `translateX(${percent}%)`
 		}
 
 		let recursion = ()=>{
 			speedOnoff = !speedOnoff
 			speed = speedOnoff ? 2000 : 300
-			timer = setTimeout(function() {
+			timer = setTimeout(() => {
 				percent += ~~(random() * 7)
 				if (percent >= maxPercent) {
 					percent = maxPercent
@@ -80,10 +78,11 @@ const start = async ()=>{
 	}
 
 //完成函数
-const done = async (status = null)=>{
+const done = async (status = null) => {
 	if (toggleNode && isStart) {
-		isStart = !isStart
 		clearTimeout(timer)
+		await st(20)
+		isStart = !isStart
 		barNode.style.background = status === 'fail' && '#FF4949'
 		percent = 0
 		barNode.style.transform = `translateX(${percent}%)`
@@ -93,6 +92,7 @@ const done = async (status = null)=>{
 		barNode.classList.add('disappear')
 		await st(transition)
 		barNode.style.display = 'none'
+		percent = -100
 		await st(16)
 		!!barNode.parentNode.parentNode && barNode.parentNode.parentNode.removeChild(barNode.parentNode)
 		isStop = isStop ||  true

@@ -1,6 +1,6 @@
 {
   "name": "miniprogress",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "progress",
   "main": "/lib/progress.js",
   "scripts": {
