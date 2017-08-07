@@ -214,6 +214,17 @@ const autoTextarea = function(elem, extra, maxHeight) {
     change()
 }
 
+/**
+ * 获取当月的天数
+ * @param  {Number} year  年
+ * @param  {Number} month 要获取月份的上一个月
+ * @return {Number}       该月有多少天
+ */
+function daysInMonth(year, month) {
+    let date = new Date(year, month + 1, 0);
+    return date.getDate();
+}
+
 module.exports = {
-	user, email, phone, IDcard, fullCn, partCn, password, issamepw, curBrowser, autoTextarea
+	user, email, phone, IDcard, fullCn, partCn, password, issamepw, curBrowser, autoTextarea, daysInMonth
 }
