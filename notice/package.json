@@ -1,0 +1,37 @@
+{
+  "name": "mininotice",
+  "version": "1.0.7",
+  "description": "notice",
+  "main": "/lib/notice.js",
+  "scripts": {
+    "pack": "node package.js",
+    "dev": "webpack-dev-server"
+  },
+  "keywords": [
+    "notice"
+  ],
+  "author": "fox",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "cssnano": "^3.10.0",
+    "es6-promise": "^4.1.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.29.0",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1"
+  },
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0"
+  }
+}
