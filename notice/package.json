@@ -1,6 +1,6 @@
 {
   "name": "mininotice",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "notice",
   "main": "/lib/notice.js",
   "scripts": {

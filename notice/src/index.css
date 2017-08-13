@@ -1,4 +1,4 @@
-@keyframes :local(appear){
+@keyframes appear{
 	0%{
 		transform: translateX(-50%) scale(0);
 	}
@@ -6,7 +6,7 @@
 		transform: translateX(-50%) scale(1);
 	}
 }
-@keyframes :local(disappear){
+@keyframes disappear{
 	0%{
 		transform: translateX(-51%) scale(1);
 	}
@@ -14,11 +14,11 @@
 		transform: translateX(-50%) scale(0);
 	}
 }
-:local .mininotice p {
+.mininotice p {
 	padding: 0;
 	margin: 0;
 }
-:local .mininotice{
+.mininotice{
 	position: fixed;
 	left: 50%;
 	top: 24px;
@@ -27,19 +27,19 @@
 	border-radius: 1px;
 	border: 2px solid #C0CCDA;
 }
-:local .info{
+.info{
 	box-shadow: 0 0 0 4px #20A0FF,
 	4px 4px 20px 0px #1F2D3D;
 }
-:local .success{
+.success{
 	box-shadow: 0 0 0 4px #13CE66,
 	4px 4px 20px 0px #1F2D3D;
 }
-:local .warning{
+.warning{
 	box-shadow: 0 0 0 4px #F7BA2A,
 	4px 4px 20px 0px #1F2D3D;
 }
-:local .danger{
+.danger{
 	box-shadow: 0 0 0 4px #FF4949,
 	4px 4px 20px 0px #1F2D3D;
 }
@@ -51,17 +51,17 @@
 	animation: disappear .4s;
 	animation-fill-mode: forwards;
 }
-:local .mininotice p{
+.mininotice p{
 	font-size: 14px;
 	color: #475669;
 	box-sizing: border-box;
 	padding: 8px 40px 8px 20px;
 	text-align: center;
 }
-:local .mininotice .noClose{
+.mininotice .noClose{
 	padding: 8px 30px;
 }
-:local .mininotice .close{
+.mininotice .close{
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -73,10 +73,10 @@
 	cursor: pointer;
 	transition: .2s;
 }
-:local .mininotice .close:hover{
+.mininotice .close:hover{
 	color: #475669;
 }
-:local .mininotice .close:after{
+.mininotice .close:after{
 	content: '';
 	position: absolute;
 	top: 0;
@@ -89,7 +89,7 @@
 	box-shadow: inset 0 0 0 10000px;
 	transform: rotate(45deg);
 }
-:local .mininotice .close:before{
+.mininotice .close:before{
 	content: '';
 	position: absolute;
 	top: 0;

@@ -29,7 +29,15 @@ webpackConfig = {
 			test: /\.css$/,
 			use: css_extract.extract({
 				fallback: "style-loader",
-				use: ["css-loader","postcss-loader"]
+				use: [{
+					loader: "css-loader",
+					options: {//模块化css
+						modules: true,
+						localIdentName: '[path][name]__[local]--[hash:base64:5]'
+					}
+				}, {
+					loader: "postcss-loader"
+				}]
 			})
 		}]
 	},
