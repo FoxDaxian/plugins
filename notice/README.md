@@ -9,5 +9,16 @@
     import mininotice from 'mininotice'
     import 'mininotice/lib/notice.css'
 ```
+#### At present, notice plugin has a few ways:
+
+- ##### ```mininotice.msg```: just like toast component, 3.5s after the disappearance
+    ```Mininotice.msg has the following parameters:```  
+
+    |name|type|default|desc|
+    |-----|-----|-----|--------------------|
+    |msg|String|'hello, notice'|message of mininotice.msg|
+    |type|String|'info'|there are four, namely: ```info```, ```success```, ```warning```, ```danger```|
+    |canClose|Boolean|false|Whether it can be closed|
+
 
 ## all of the above is what i hope you expect   :)
