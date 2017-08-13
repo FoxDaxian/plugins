@@ -15,7 +15,7 @@ webpackConfig = {
 		filename: 'notice.js',
 		publicPath: '/',
 		//以下两个选项用于以umd方式打包
-		library: "notice",
+		library: "mininotice",
 		libraryTarget: "umd"
 	},
 	module: {
