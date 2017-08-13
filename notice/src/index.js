@@ -1,5 +1,6 @@
-import notice from 'mininotice'
-import 'mininotice/lib/notice.css'
+import notice from './notice.js'
+// import notice from 'mininotice'
+// import 'mininotice/lib/notice.css'
 
 console.log(notice)
 document.querySelector('h1').onclick = function() {
