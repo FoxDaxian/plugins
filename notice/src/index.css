@@ -5,19 +5,61 @@
 .mininotice{
 	position: fixed;
 	left: 50%;
-	transform: translateX(-50%);
-	border-radius: 1px;
-    box-shadow: 0 0 0 4px #20A0FF,
-    4px 4px 20px 0px #1F2D3D;
-	border: 2px solid #C0CCDA;
+	top: 24px;
 	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 1px;
+	border: 2px solid #C0CCDA;
+}
+.info{
+	box-shadow: 0 0 0 4px #20A0FF,
+	4px 4px 20px 0px #1F2D3D;
+}
+.success{
+	box-shadow: 0 0 0 4px #13CE66,
+	4px 4px 20px 0px #1F2D3D;
+}
+.warning{
+	box-shadow: 0 0 0 4px #F7BA2A,
+	4px 4px 20px 0px #1F2D3D;
+}
+.danger{
+	box-shadow: 0 0 0 4px #FF4949,
+	4px 4px 20px 0px #1F2D3D;
+}
+@keyframes appear{
+	0%{
+		transform: translateX(-50%) scale(0);
+	}
+	100%{
+		transform: translateX(-50%) scale(1);
+	}
+}
+@keyframes disappear{
+	0%{
+		transform: translateX(-50%) scale(1);
+	}
+	100%{
+		transform: translateX(-50%) scale(0);
+	}
+}
+.appear{
+	animation: .4s appear;
+	animation-fill-mode: forwards;
+}
+.disappear{
+	animation: .4s disappear;
+	animation-fill-mode: forwards;
 }
 .mininotice p{
 	font-size: 14px;
 	color: #475669;
 	box-sizing: border-box;
-	padding: 7px 45px 9px;
+	padding: 8px 40px 8px 20px;
 	text-align: center;
+}
+.mininotice .noClose{
+	padding: 8px 30px;
 }
 .mininotice .close{
 	position: absolute;

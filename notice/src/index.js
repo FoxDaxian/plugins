@@ -1,4 +1,7 @@
-import notice from './notice.js'
+import notice from 'mininotice'
+import 'mininotice/lib/notice.css'
 
 console.log(notice)
-notice.msg()
+document.querySelector('h1').onclick = function() {
+	notice.msg('', 'success', 1)
+}
