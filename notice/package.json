@@ -1,6 +1,6 @@
 {
   "name": "mininotice",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "description": "notice",
   "main": "/lib/notice.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0"
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "mininotice": "^1.0.0"
   }
 }
