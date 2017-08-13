@@ -1,14 +1,15 @@
 //引入promise
 const Promise = require('es6-promise').Promise;
 
-import './index.css'
+import css from './index.css'
+
 //创建节点
 let progressNode,barNode
 function createEl() {
 	progressNode = document.createElement('div')
-	progressNode.classList.add('progress')
+	progressNode.classList.add(`${ css.progress }`)
 	barNode = document.createElement('div')
-	barNode.classList.add('bar')
+	barNode.classList.add(`${ css.bar }`)
 	progressNode.appendChild(barNode)
 	barNode.style.transform = 'translateX(-100%)'
 	return progressNode
@@ -55,8 +56,8 @@ const start = ()=>{
 			document.body.appendChild(createEl())
 			barNode.style.transition = `${transition / 1000}s`
 			toggleNode = !toggleNode
-			barNode.classList.add('blink')
-			percent += 2
+			barNode.classList.add(`${ css.blink }`)
+			percent += 0
 			barNode.style.transform = `translateX(${percent}%)`
 		}
 
@@ -87,9 +88,9 @@ const done = async (status = null) => {
 		percent = 0
 		barNode.style.transform = `translateX(${percent}%)`
 		await st(transition)
-		barNode.classList.remove('blink')
+		barNode.classList.remove(`${ css.blink }`)
 		await st(16)
-		barNode.classList.add('disappear')
+		barNode.classList.add(`${ css.fadeout }`)
 		await st(transition)
 		barNode.style.display = 'none'
 		percent = -100

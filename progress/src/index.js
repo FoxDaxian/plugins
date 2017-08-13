@@ -3,7 +3,6 @@ import progress from './progress.js'
 console.log(progress);
 document.querySelector('.start').onclick = function() {
 	progress.start()
-	progress.done()
 }
 
 document.querySelector('.done').onclick = progress.done

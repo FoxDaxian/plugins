@@ -19,10 +19,10 @@
 	opacity: 1;
 	box-shadow: rgba(0,0,0,.6) 2px 0 6px 1px;
 }
-.progress .blink{
+:local .progress .blink{
 	animation: blind 2s ease-out infinite;
 }
-.progress .disappear{
+.progress .fadeout{
 	opacity: 0;
 }
 @keyframes blind {

@@ -29,7 +29,15 @@ webpackConfig = {
 			test: /\.css$/,
 			use: css_extract.extract({
 				fallback: "style-loader",
-				use: ["css-loader","postcss-loader"]
+				use: [{
+					loader: "css-loader",
+					options: {//模块化css
+						modules: true,
+						localIdentName: '[path][name]__[local]--[hash:base64:5]'
+					}
+				}, {
+					loader: "postcss-loader"
+				}]
 			})
 		}]
 	},
@@ -40,12 +48,12 @@ webpackConfig = {
 			warnings: false
 		}
 	}),
-	new OptimizeCssAssetsPlugin({
-		assetNameRegExp: /\.css$/g,//匹配要压缩的文件后缀
-		cssProcessor: require('cssnano'),//why cssnano？https://github.com/iuap-design/blog/issues/159
-		cssProcessorOptions: { discardComments: {removeAll: true } },
-		canPrint: true
-	}),
+	// new OptimizeCssAssetsPlugin({
+	// 	assetNameRegExp: /\.css$/g,//匹配要压缩的文件后缀
+	// 	cssProcessor: require('cssnano'),//why cssnano？https://github.com/iuap-design/blog/issues/159
+	// 	cssProcessorOptions: { discardComments: {removeAll: true } },
+	// 	canPrint: true
+	// }),
 	css_extract
 	]
 }
