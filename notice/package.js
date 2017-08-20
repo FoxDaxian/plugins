@@ -50,7 +50,9 @@ webpackConfig = {
 	}),
 	new OptimizeCssAssetsPlugin({
 		assetNameRegExp: /\.css$/g,//匹配要压缩的文件后缀
-		cssProcessor: require('cssnano'),//why cssnano？https://github.com/iuap-design/blog/issues/159
+		cssProcessor: require('cssnano')({
+			reduceIdents: false,// https://github.com/ben-eb/cssnano/issues/247
+		}),//why cssnano？https://github.com/iuap-design/blog/issues/159
 		cssProcessorOptions: { discardComments: {removeAll: true } },
 		canPrint: true
 	}),
