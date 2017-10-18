@@ -1,8 +1,8 @@
 {
   "name": "mininotice",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "notice",
-  "main": "/lib/notice.js",
+  "main": "./lib/notice.js",
   "scripts": {
     "pack": "node package.js",
     "dev": "webpack-dev-server"
