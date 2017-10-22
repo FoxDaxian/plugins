@@ -8,6 +8,8 @@
 ```javascript
     import mininotice from 'mininotice'
     import 'mininotice/lib/notice.css'
+    // execute
+    mininotice.msg('评论不能为空', 'success', true)
 ```
 #### At present, notice plugin has a few ways:
 
